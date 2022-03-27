@@ -38,6 +38,10 @@ We created a melt_data(df) fuction to transform the data from wide to long forma
 
 We visualized the typical home value of these five zipcodes in the review period (2000-2022). The typical housing prices had a positive trend and the prices are probably not stationary because the next period prices depended on the previous period price. The ultimate goal of investing is to achieve the high ROI. Therefore, we will focus on the monthly returns and build a model for the selected 5 zipcodes to forecast their monthly returns.
 
+![](https://github.com/carlearn/dsc-phase-4-project/blob/main/charts/typical_home_value_top_5_ny.png)
+
+1[](https://github.com/carlearn/dsc-phase-4-project/blob/main/charts/monthly_return_typical_home_value_11235.png)
+
 #### Stationarity Check
 
 Our approach is to plot the rolling mean and standard deviation against the original data to visually see if there are any trends and by using the Dickey-Fuller Test. The null hypothesis for Dickey Fuller is that the data is not stationary. 
@@ -45,6 +49,8 @@ Our approach is to plot the rolling mean and standard deviation against the orig
 For the five zipcodes: 
 * The rolling mean shows a trend. 
 * The Dickey-Fuller test cannot reject the null hypothesis of non-stationarity (p-value > 0.05).
+
+![](https://github.com/carlearn/dsc-phase-4-project/blob/main/charts/rolling_mean_std_11235.png)
 
 From the results above, two of the five zip codes resulted in non-stationary at a 95 % confidence level. Therefore, these two zipcodes will need the ‘I’ parameter in the ARIMA model is going to be set to 1, but we will look at the aic result for further determination.
 
@@ -54,6 +60,8 @@ From the results above, two of the five zip codes resulted in non-stationary at 
 
 The AR and MA parameters can be estimated using the autocorrelation function (ACF) and partial autocorrelation function (PACF) plots of the stationary time series.
 
+![](https://github.com/carlearn/dsc-phase-4-project/blob/main/charts/acf_pacf_11235.png)
+
 #### Parameter Selection for the ARIMA Time Series Model
 
 We used the AIC (Akaike Information Criterion) as Regularization Measure. We find the lowest AIC and select the parameters for further prediction analysis. 
@@ -62,13 +70,21 @@ We used the AIC (Akaike Information Criterion) as Regularization Measure. We fin
 
 We fit the ARIMA model for each zipcode, whose p-value of the AR and MR parameters is below 0.05 threshold. We fit the model and plot the diagnostics with model summary and plots to ensure that residuals remain uncorrelated, normally distributed having zero mean. In the absence of these assumptions, we can not move forward and need further tweaking of the model.
 
+![](https://github.com/carlearn/dsc-phase-4-project/blob/main/charts/arima_model_fit_11235.png)
+
 #### Validating the Models
 
 We performed one-step ahead forecasting and dynamic forecasting to predict the model and validate the model. We further checked the accuracy of the forecasts using MSE which are all close to 0.0.
 
+![](https://github.com/carlearn/dsc-phase-4-project/blob/main/charts/arima_one_step_ahead_forecast_11235.png)
+
+![](https://github.com/carlearn/dsc-phase-4-project/blob/main/charts/arima_dynamic_forecast_11235.png)
+
 #### Producing and Visualizing Forecasts
 
 We leveraged the .get_forecast() to obtain the forecast of the return in 1 year, 3 years, 5 years and 10 years. 
+
+![](https://github.com/carlearn/dsc-phase-4-project/blob/main/charts/arima_model_forecast_11235.png)
 
 We summarized our findings below:
 

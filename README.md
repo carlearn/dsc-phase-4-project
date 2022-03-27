@@ -40,7 +40,7 @@ We visualized the typical home value of these five zipcodes in the review period
 
 ![](https://github.com/carlearn/dsc-phase-4-project/blob/main/charts/typical_home_value_top_5_ny.png)
 
-1[](https://github.com/carlearn/dsc-phase-4-project/blob/main/charts/monthly_return_typical_home_value_11235.png)
+![](https://github.com/carlearn/dsc-phase-4-project/blob/main/charts/monthly_return_typical_home_value_11235.png)
 
 #### Stationarity Check
 
